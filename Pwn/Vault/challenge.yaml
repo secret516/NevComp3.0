@@ -1,0 +1,23 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/dimasma0305/gzcli/refs/heads/master/internal/template/templates/others/ctf-template/.gzctf/challenge.schema.yaml
+name: "Vault"
+author: "Gengg"
+
+description: |
+  chall ramah
+
+type: "DynamicContainer"
+value: 1000
+
+provide: "./dist"
+
+container:
+  flagTemplate: "NevComp3.0{0gw_&_0rw_sh3llc0d3_e3sy_r1ght?_099f82d7d4}"
+  containerImage: "{{.slug}}:latest"
+  memoryLimit: 512
+  cpuCount: 2
+  storageLimit: 512
+  exposePort: 5000
+  enableTrafficCapture: false
+
+scripts:
+  start: docker build -t {{.slug}} .

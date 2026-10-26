@@ -1,0 +1,23 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/dimasma0305/gzcli/refs/heads/master/internal/template/templates/others/ctf-template/.gzctf/challenge.schema.yaml
+name: "Trace Me If You Can"
+author: "Gengg"
+
+description: |
+  ez lah ini, jgn terlalu ovt wkwk
+
+type: "DynamicContainer"
+value: 1000
+
+provide: "./dist"
+
+container:
+  flagTemplate: "NevComp3.0{tr4c3_m3_1f_y0u_c4n_w1th_gdb_ptr4c3}"
+  containerImage: "{{.slug}}:latest"
+  memoryLimit: 512
+  cpuCount: 2
+  storageLimit: 512
+  exposePort: 5000
+  enableTrafficCapture: false
+
+scripts:
+  start: docker build -t {{.slug}} .

@@ -1,0 +1,10 @@
+version: '3'
+services:
+  vault:
+    image: vault
+    build: .
+    restart: always
+    environment:
+      - TERM=xterm
+    ports:
+      - "1338:1338" 

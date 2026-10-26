@@ -1,0 +1,23 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/dimasma0305/gzcli/refs/heads/master/internal/template/templates/others/ctf-template/.gzctf/challenge.schema.yaml
+name: "Too Close"
+author: "Gengg"
+
+description: |
+  Keep your friends close, but your prime numbers far apart😂
+
+type: "DynamicContainer"
+value: 1000
+
+provide: "./dist"
+
+container:
+  flagTemplate: "NevComp3.0{a_little_too_close_for_comfort}"
+  containerImage: "{{.slug}}:latest"
+  memoryLimit: 512
+  cpuCount: 2
+  storageLimit: 512
+  exposePort: 5000
+  enableTrafficCapture: false
+
+scripts:
+  start: docker build -t {{.slug}} .

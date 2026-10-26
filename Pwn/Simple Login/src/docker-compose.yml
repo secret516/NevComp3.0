@@ -1,0 +1,10 @@
+version: '3'
+services:
+  simple_login:
+    image: simple_login
+    build: .
+    restart: always
+    environment:
+      - TERM=xterm
+    ports:
+      - "1337:1337" 

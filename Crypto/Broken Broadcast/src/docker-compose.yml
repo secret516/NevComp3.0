@@ -1,0 +1,10 @@
+version: '3'
+services:
+  broken_broadcast:
+    image: broken_broadcast
+    build: .
+    restart: always
+    environment:
+      - TERM=xterm
+    ports:
+      - "1111:1111" 

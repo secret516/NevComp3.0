@@ -1,0 +1,23 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/dimasma0305/gzcli/refs/heads/master/internal/template/templates/others/ctf-template/.gzctf/challenge.schema.yaml
+name: "Simple Login"
+author: "Gengg"
+
+description: |
+  login login login
+
+type: "DynamicContainer"
+value: 1000
+
+provide: "./dist"
+
+container:
+  flagTemplate: "NevComp3.0{basic_ret2libc_ggwp...sengaja_gk_kasih_libc_biar_cari_libc_nya_sendiri_fdec58ec61d}"
+  containerImage: "{{.slug}}:latest"
+  memoryLimit: 512
+  cpuCount: 2
+  storageLimit: 512
+  exposePort: 5000
+  enableTrafficCapture: false
+
+scripts:
+  start: docker build -t {{.slug}} .
