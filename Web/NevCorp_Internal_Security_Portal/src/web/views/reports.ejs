@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <title>Incident Reports — NevCorp SOC Portal</title>
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+  <div class="navbar">
+    <div class="brand">NevCorp <span class="dim">// Security Operations Center</span></div>
+    <nav>
+      <a href="/dashboard">Dashboard</a>
+      <a href="/reports">Incident Reports</a>
+      <a href="/logout">Logout</a>
+    </nav>
+  </div>
+
+  <div class="wrap">
+    <div class="panel">
+      <h2>Laporan Insiden Saya</h2>
+      <a class="btn" href="/reports/new">&gt; Submit Baru</a>
+
+      <div style="margin-top:20px;">
+        <% if (reports.length === 0) { %>
+          <p style="color:var(--muted)">Belum ada laporan.</p>
+        <% } %>
+        <% reports.forEach(function(r) { %>
+          <div class="report-card">
+            <h3>#<%= r.id %> — <%= r.title %></h3>
+            <div class="meta">oleh <%= r.author %> &middot; <%= r.created_at %></div>
+            <div><%= r.description %></div>
+          </div>
+        <% }) %>
+      </div>
+    </div>
+  </div>
+
+  <footer>NevCorp SOC Portal &mdash; NevComp3.0 CTF</footer>
+</body>
+</html>

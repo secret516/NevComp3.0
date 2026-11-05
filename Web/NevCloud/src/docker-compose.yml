@@ -1,0 +1,7 @@
+services:
+  nevcloud:
+    build: .
+    container_name: nevcloud
+    ports:
+      - "5000:5000"
+    restart: unless-stopped

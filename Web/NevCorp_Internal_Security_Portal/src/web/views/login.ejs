@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <title>Login — NevCorp SOC Portal</title>
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+  <div class="navbar">
+    <div class="brand">NevCorp <span class="dim">// Security Operations Center</span></div>
+    <nav><a href="/">Home</a></nav>
+  </div>
+
+  <div class="wrap" style="max-width:420px;">
+    <div class="panel">
+      <h2>Staff Login</h2>
+      <% if (error) { %>
+        <div class="alert-error"><%= error %></div>
+      <% } %>
+      <form method="POST" action="/login">
+        <label>Username</label>
+        <input type="text" name="username" placeholder="Masukkan username" autocomplete="off">
+
+        <label>Password</label>
+        <input type="password" name="password" autocomplete="off">
+
+        <button type="submit">Login</button>
+      </form>
+    </div>
+  </div>
+
+  <footer>NevCorp SOC Portal &mdash; NevComp3.0 CTF</footer>
+</body>
+</html>

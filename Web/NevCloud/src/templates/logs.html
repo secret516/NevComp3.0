@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% block title %}Instance Logs - NevCloud{% endblock %}
+{% block content %}
+<h1>View Instance Logs</h1>
+<p>Select one of your instances to view its latest log output.</p>
+{% if error %}<div class="error">{{ error }}</div>{% endif %}
+
+<table>
+  <tr><th>Instance</th><th>Kind</th><th>Status</th><th></th></tr>
+  {% for i in instances %}
+  <tr>
+    <td>{{ i['name'] }}</td>
+    <td>{{ i['kind'] }}</td>
+    <td class="status-{{ i['status'] }}">{{ i['status'] }}</td>
+    <td><a href="{{ url_for('view_logs', file=i['name'] ~ '.log') }}">View</a></td>
+  </tr>
+  {% else %}
+  <tr><td colspan="4">No instances provisioned yet.</td></tr>
+  {% endfor %}
+</table>
+
+{% if content is not none %}
+<h3 style="margin-top:24px">{{ requested }}</h3>
+<pre>{{ content }}</pre>
+{% endif %}
+{% endblock %}

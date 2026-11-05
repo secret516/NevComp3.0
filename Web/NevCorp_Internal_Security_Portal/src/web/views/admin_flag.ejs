@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <title>Admin Panel — NevCorp SOC Portal</title>
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+  <div class="navbar">
+    <div class="brand">NevCorp <span class="dim">// SOC Lead Console</span></div>
+    <nav>
+      <a href="/admin/reports">All Reports</a>
+      <a href="/admin/flag">Admin Panel</a>
+      <a href="/logout">Logout</a>
+    </nav>
+  </div>
+
+  <div class="wrap">
+    <div class="panel">
+      <h2>SOC Lead Admin Panel <span class="badge">superadmin</span></h2>
+      <p class="terminal-line">Verifikasi identitas berhasil. Berikut kredensial rahasia tingkat tinggi:</p>
+      <div class="flag-box"><%= flag %></div>
+    </div>
+  </div>
+
+  <footer>NevCorp SOC Portal &mdash; NevComp3.0 CTF</footer>
+</body>
+</html>

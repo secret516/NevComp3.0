@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <title>SOC Lead Review — NevCorp SOC Portal</title>
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+  <div class="navbar">
+    <div class="brand">NevCorp <span class="dim">// SOC Lead Console</span></div>
+    <nav>
+      <a href="/admin/reports">All Reports</a>
+      <a href="/admin/flag">Admin Panel</a>
+      <a href="/logout">Logout</a>
+    </nav>
+  </div>
+
+  <div class="wrap">
+    <div class="panel">
+      <h2>Semua Laporan Insiden <span class="badge">superadmin</span></h2>
+      <p style="color:var(--muted); font-size:13px;">
+        Review seluruh laporan yang masuk dari staff.
+      </p>
+
+      <div style="margin-top:20px;">
+        <% reports.forEach(function(r) { %>
+          <div class="report-card">
+            <h3>#<%= r.id %> — <%- r.title %></h3>
+            <div class="meta">oleh <%= r.author %> &middot; <%= r.created_at %></div>
+            <div><%- r.description %></div>
+          </div>
+        <% }) %>
+      </div>
+    </div>
+  </div>
+
+  <footer>NevCorp SOC Portal &mdash; NevComp3.0 CTF</footer>
+</body>
+</html>

@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% block title %}Host Resolution Check - NevCloud{% endblock %}
+{% block content %}
+<h1>Host Resolution Check</h1>
+<p>Internal tool: verifies a hostname resolves correctly before an instance
+is provisioned against it (used for custom domain / reverse-DNS setups).</p>
+{% if error %}<div class="error">{{ error }}</div>{% endif %}
+<form method="POST">
+  <label>Hostname</label>
+  <input type="text" name="host" value="{{ host }}" placeholder="customer-domain.example">
+  <button type="submit">Check</button>
+</form>
+{% if result is not none %}
+<h3>Result</h3>
+<pre>{{ result }}</pre>
+{% endif %}
+{% endblock %}

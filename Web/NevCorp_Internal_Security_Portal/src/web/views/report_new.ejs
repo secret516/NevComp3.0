@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <title>Submit Report — NevCorp SOC Portal</title>
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+  <div class="navbar">
+    <div class="brand">NevCorp <span class="dim">// Security Operations Center</span></div>
+    <nav>
+      <a href="/dashboard">Dashboard</a>
+      <a href="/reports">Incident Reports</a>
+      <a href="/logout">Logout</a>
+    </nav>
+  </div>
+
+  <div class="wrap">
+    <div class="panel">
+      <h2>Submit Incident Report</h2>
+      <p style="color:var(--muted); font-size:13px;">
+        Laporan ini akan direview oleh SOC Lead. Konten melewati security filter sebelum disimpan.
+      </p>
+      <% if (error) { %>
+        <div class="alert-error"><%= error %></div>
+      <% } %>
+      <form method="POST" action="/reports/new">
+        <label>Judul</label>
+        <input type="text" name="title" placeholder="contoh: Suspicious login attempt">
+
+        <label>Deskripsi</label>
+        <textarea name="description" placeholder="Jelaskan detail insiden..."></textarea>
+
+        <button type="submit">Kirim Laporan</button>
+      </form>
+    </div>
+  </div>
+
+  <footer>NevCorp SOC Portal &mdash; NevComp3.0 CTF</footer>
+</body>
+</html>

@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% block title %}Help Center - NevCloud{% endblock %}
+{% block content %}
+<h1>Help Center</h1>
+<p>Search our documentation for setup guides, billing info, and more.</p>
+<form method="GET">
+  <label>Search</label>
+  <input type="text" name="q" value="{{ query }}" placeholder="e.g. billing, ssh-keys, backups">
+  <button type="submit">Search</button>
+</form>
+
+{% if error %}<div class="error">{{ error }}</div>{% endif %}
+
+{% if content is not none %}
+<h3 style="margin-top:24px">Result</h3>
+<pre>{{ content }}</pre>
+{% endif %}
+
+<h3 style="margin-top:28px">Popular topics</h3>
+<p>
+  {% for t in topics %}
+  <a href="{{ url_for('help_center', q=t) }}" style="margin-right:14px">{{ t }}</a>
+  {% endfor %}
+</p>
+{% endblock %}

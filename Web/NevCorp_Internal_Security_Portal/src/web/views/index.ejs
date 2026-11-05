@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <title>NevCorp SOC Portal</title>
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+  <div class="navbar">
+    <div class="brand">NevCorp <span class="dim">// Security Operations Center</span></div>
+    <nav>
+      <% if (sess) { %>
+        <a href="/dashboard">Dashboard</a>
+        <a href="/logout">Logout</a>
+      <% } else { %>
+        <a href="/login">Staff Login</a>
+      <% } %>
+    </nav>
+  </div>
+
+  <div class="wrap">
+    <div class="panel">
+      <h1>NevCorp Internal Security Portal</h1>
+      <p class="terminal-line">Welcome to the NevCorp Security Operations Center employee portal.</p>
+      <p>Portal ini digunakan oleh staff NevCorp untuk melaporkan insiden keamanan (incident report)
+        yang kemudian direview secara berkala oleh <strong>SOC Lead</strong>.</p>
+      <p style="color:var(--muted); font-size:13px;">
+        Akses hanya untuk karyawan terverifikasi. Aktivitas pada portal ini dicatat untuk keperluan audit.
+      </p>
+      <a class="btn" href="/login">&gt; Masuk ke Portal</a>
+    </div>
+
+    <div class="panel">
+      <h3>Status Sistem</h3>
+      <p class="terminal-line" style="color:var(--green)">AUTH SERVICE ..... ONLINE</p>
+      <p class="terminal-line" style="color:var(--green)">INCIDENT QUEUE .... ONLINE</p>
+      <p class="terminal-line" style="color:var(--green)">SOC LEAD REVIEW BOT ONLINE</p>
+    </div>
+  </div>
+
+  <footer>NevCorp SOC Portal &mdash; NevComp3.0 CTF</footer>
+</body>
+</html>

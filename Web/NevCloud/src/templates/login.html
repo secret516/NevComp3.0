@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><meta charset="UTF-8"><title>Sign in - NevCloud</title>
+<style>
+  body { font-family: 'Segoe UI', Arial, sans-serif; background: #0b1220; display: flex; align-items: center; justify-content: center; height: 100vh; margin:0; }
+  .box { background: #fff; padding: 36px 40px; border-radius: 10px; box-shadow: 0 4px 24px rgba(0,0,0,.35); width: 340px; }
+  h1 { text-align: center; color: #0891b2; }
+  input { width: 100%; padding: 10px; margin: 6px 0 16px; border: 1px solid #cbd5e1; border-radius: 6px; box-sizing: border-box; }
+  button { width: 100%; background: #0891b2; color: #fff; border: none; padding: 10px; border-radius: 6px; cursor: pointer; }
+  .error { color: #a33; background: #fde8e8; padding: 8px 12px; border-radius: 6px; margin-bottom: 12px; }
+  a { display:block; text-align:center; margin-top: 14px; color: #0891b2; }
+</style>
+</head>
+<body>
+<div class="box">
+  <h1>☁ NevCloud</h1>
+  {% if error %}<div class="error">{{ error }}</div>{% endif %}
+  <form method="POST">
+    <label>Username</label>
+    <input type="text" name="username" required>
+    <label>Password</label>
+    <input type="password" name="password" required>
+    <button type="submit">Sign in</button>
+  </form>
+  <a href="{{ url_for('register') }}">Need an account? Sign up</a>
+</div>
+</body>
+</html>

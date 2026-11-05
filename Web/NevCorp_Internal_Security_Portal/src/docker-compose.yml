@@ -1,0 +1,45 @@
+version: '3.8'
+
+services:
+  db:
+    image: mysql:8.0
+    restart: unless-stopped
+    environment:
+      MYSQL_ROOT_PASSWORD: rootpass_changeme
+      MYSQL_DATABASE: nevcomp
+      MYSQL_USER: nevuser
+      MYSQL_PASSWORD: nevpass_changeme
+    volumes:
+      - ./web/db/init.sql:/docker-entrypoint-initdb.d/init.sql:ro
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost", "-u", "root", "-prootpass_changeme"]
+      interval: 5s
+      timeout: 5s
+      retries: 15
+
+  web:
+    build: ./web
+    restart: unless-stopped
+    environment:
+      DB_HOST: db
+      DB_USER: nevuser
+      DB_PASSWORD: nevpass_changeme
+      DB_NAME: nevcomp
+      BOT_SECRET: b0t_1nt3rnal_s3cr3t_CHANGE_ME
+      FLAG: "NevComp3.0{sqli_4uth_byp4ss_th3n_st0r3d_xss}"
+      PORT: 3000
+    depends_on:
+      db:
+        condition: service_healthy
+    ports:
+      - "3000:3000"
+
+  bot:
+    build: ./bot
+    restart: unless-stopped
+    environment:
+      WEB_URL: http://web:3000
+      BOT_SECRET: b0t_1nt3rnal_s3cr3t_CHANGE_ME
+      VISIT_INTERVAL_MS: "15000"
+    depends_on:
+      - web

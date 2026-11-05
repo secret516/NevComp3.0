@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <title>Dashboard — NevCorp SOC Portal</title>
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+  <div class="navbar">
+    <div class="brand">NevCorp <span class="dim">// Security Operations Center</span></div>
+    <nav>
+      <a href="/dashboard">Dashboard</a>
+      <a href="/reports">Incident Reports</a>
+      <a href="/logout">Logout</a>
+    </nav>
+  </div>
+
+  <div class="wrap">
+    <div class="panel">
+      <h1>Selamat datang, <%= session.username %> <span class="badge"><%= session.role %></span></h1>
+      <p class="terminal-line">Sesi staff kamu aktif.</p>
+      <p>Gunakan menu <strong>Incident Reports</strong> untuk mengirim laporan insiden keamanan.
+        Laporan akan direview oleh SOC Lead secara berkala.</p>
+      <a class="btn" href="/reports/new">&gt; Submit Incident Report</a>
+    </div>
+
+    <div class="panel">
+      <h3>Catatan Internal</h3>
+      <p class="terminal-line" style="color:var(--muted)">Panel admin / SOC Lead hanya dapat diakses oleh role superadmin.</p>
+    </div>
+  </div>
+
+  <footer>NevCorp SOC Portal &mdash; NevComp3.0 CTF</footer>
+</body>
+</html>

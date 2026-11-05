@@ -1,0 +1,17 @@
+CREATE TABLE IF NOT EXISTS users (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  username VARCHAR(64) NOT NULL,
+  password VARCHAR(128) NOT NULL,
+  role VARCHAR(32) NOT NULL DEFAULT 'staff'
+);
+
+INSERT INTO users (username, password, role)
+VALUES ('admin', 'Xk9!mQ2z#Lp7@Rt4wVb1', 'staff');
+
+CREATE TABLE IF NOT EXISTS reports (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  author VARCHAR(64) NOT NULL,
+  title TEXT NOT NULL,
+  description TEXT NOT NULL,
+  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);

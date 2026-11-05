@@ -1,0 +1,22 @@
+name: "NevCloud"
+author: "n19"
+ 
+description: |
+  .
+ 
+type: "DynamicContainer"
+value: 1000
+ 
+provide: "./src"
+ 
+container:
+  flagTemplate: "NevComp3.0{l34k3d_dot3nv_f0rg3d_jwt_rc3}"
+  containerImage: "{{.slug}}:latest"
+  memoryLimit: 512
+  cpuCount: 2
+  storageLimit: 512
+  exposePort: 5000
+  enableTrafficCapture: false
+ 
+scripts:
+  start: docker build -t {{.slug}} .

@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% block title %}Dashboard - NevCloud{% endblock %}
+{% block content %}
+<h1>Welcome, {{ user['username'] }} <span class="badge">{{ user['role'] }}</span></h1>
+<p>Your cloud instances:</p>
+<table>
+  <tr><th>Name</th><th>IP Address</th><th>Region</th><th>Plan</th><th>Status</th><th>Logs</th></tr>
+  {% for i in instances %}
+  <tr>
+    <td>{{ i['name'] }}</td>
+    <td>{{ i['ip'] }}</td>
+    <td>{{ i['region'] }}</td>
+    <td>{{ i['plan'] }}</td>
+    <td class="status-{{ i['status'] }}">{{ i['status'] }}</td>
+    <td><a href="{{ url_for('view_logs', file=i['name'] ~ '.log') }}">View logs</a></td>
+  </tr>
+  {% else %}
+  <tr><td colspan="6">No instances provisioned yet.</td></tr>
+  {% endfor %}
+</table>
+{% endblock %}

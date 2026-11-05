@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% block title %}Admin - NevCloud{% endblock %}
+{% block content %}
+<h1>Staff Panel <span class="badge">admin</span></h1>
+<p>Registered accounts:</p>
+<table>
+  <tr><th>ID</th><th>Username</th><th>Role</th></tr>
+  {% for u in users %}
+  <tr><td>{{ u['id'] }}</td><td>{{ u['username'] }}</td><td>{{ u['role'] }}</td></tr>
+  {% endfor %}
+</table>
+<p style="margin-top:24px">
+  <a href="{{ url_for('admin_diagnostics') }}">
+    <button type="button">Open Host Resolution Check</button>
+  </a>
+</p>
+{% endblock %}
